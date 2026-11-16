@@ -45,3 +45,5 @@ python3 scripts/walkthrough.py --workflow compare-renders
 持久化使用完整 JSON 状态的原子替换，保留全部任务与快照，事件只保留最近 500 条。适合中小规模、单写实例工作负载。清理结果只释放 PNG 字节，仍保留任务事实和摘要。进程重启可恢复任务；突然断电的文件系统耐久性不作额外保证。
 
 测试处于 deferred 阶段，基线未包含自动化测试套件或 `test_command`。生产工作流检查、构建与静态检查已单独提供。接口和持久状态的规则详见 `PROJECT_SPEC.md`、`docs/api.md`、`docs/operations.md`。
+
+交换包导入的事务原子性与故障注入有独立自动化验证（对抗输入、同名异内容、并行导入、写盘失败、空实例渲染一致），运行 `make verify-import`，覆盖说明见 `docs/import-verification.md`。
